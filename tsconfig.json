@@ -3,8 +3,8 @@
 		"baseUrl": ".",
 		"paths": {
 			// name and path to aliases
-			"$types": ["src/types"],
 			"$components": ["src/lib/components"],
+			"$types": ["src/lib/types"],
 			"$lib": ["src/lib"],
 			"$utils": ["src/lib/utils"],
 			"$firebase": ["src/lib/firebase/config.ts"]
