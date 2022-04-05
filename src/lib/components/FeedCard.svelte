@@ -3,7 +3,7 @@
 	export let imgUrl: string;
 </script>
 
-<div class="rounded-md bg-gray-100 p-3 pb-5 relative">
+<div class="rounded-md bg-gray-100 p-3 pb-0 relative">
 	<div class="flex items-start">
 		<div class="flex-shrink-0">
 			<img
@@ -18,10 +18,9 @@
 				<h4 class="text-xs text-gray-600">Stocholm - Sweden</h4>
 			</div>
 			<div class="mt-1 text-xs font-normal leading-none text-gray-600">14:34:56</div>
-
-			<img class="relative mt-4 h-96 rounded-md bg-red-300 object-cover" src={imgUrl} alt="" />
 		</div>
 	</div>
+	<img class="relative mt-4 h-96 rounded-md bg-red-300 object-cover" src={imgUrl} alt="" />
 	<FeedReactions />
 </div>
 
