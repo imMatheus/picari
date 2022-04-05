@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Feed from '$components/Feed.svelte';
 	import { onMount } from 'svelte';
+	import Loader from '$components/Loader.svelte';
 
 	let resolveCameraSupported;
 	let cameraSupported = new Promise(function (resolve) {
@@ -14,7 +15,9 @@
 </script>
 
 {#await cameraSupported}
-	<p>Loading ...</p>
+	<div class="h-96 bg-red-500">
+		<Loader />
+	</div>
 {:then isCameraSupported}
 	{#if isCameraSupported}
 		<div class="mx-auto max-w-3xl p-3 text-gray-900">
