@@ -1,8 +1,10 @@
 <script lang="ts">
+	import FeedReactions from './FeedReactions.svelte';
+	export let imgUrl: string;
 </script>
 
-<div class="rounded-md bg-gray-100 p-3">
-	<div class="flex items-center">
+<div class="rounded-md bg-gray-100 p-3 pb-0 relative">
+	<div class="flex items-start">
 		<div class="flex-shrink-0">
 			<img
 				class="h-12 w-12 rounded-full"
@@ -10,11 +12,16 @@
 				alt=""
 			/>
 		</div>
-		<div class="ml-3">
-			<div class="text-base font-medium leading-none">Tom Cook</div>
-			<div class="mt-1 text-sm font-normal leading-none text-gray-700">all or nothing</div>
+		<div class="ml-3 w-full">
+			<div class="flex items-baseline gap-2">
+				<h2 class="text-base font-bold leading-none">Tom Cook</h2>
+				<h4 class="text-xs text-gray-600">Stocholm - Sweden</h4>
+			</div>
+			<div class="mt-1 text-xs font-normal leading-none text-gray-600">14:34:56</div>
 		</div>
 	</div>
+	<img class="relative mt-4 h-96 rounded-md bg-red-300 object-cover" src={imgUrl} alt="" />
+	<FeedReactions />
 </div>
 
 <style>
