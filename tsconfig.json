@@ -1,3 +1,14 @@
 {
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			// name and path to aliases
+			"$components": ["src/lib/components"],
+			"$lib": ["src/lib"],
+			"$utils": ["src/lib/utils"],
+			"$firebase": ["src/lib/firebase/config.ts"]
+		}
+	},
+	"include": ["src/**/*.d.ts", "src/**/*.{js,ts,svelte}"],
 	"extends": "./.svelte-kit/tsconfig.json"
 }

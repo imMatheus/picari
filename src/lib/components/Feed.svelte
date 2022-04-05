@@ -1,5 +1,29 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import FeedCard from './FeedCard.svelte';
+	import {
+		getFirestore,
+		collection,
+		getDocs,
+		doc,
+		addDoc,
+		updateDoc,
+		deleteDoc
+	} from 'firebase/firestore';
+	import { db } from '$firebase';
+
+	const colRef = collection(db, 'posts');
+
+	onMount(() => {
+		getDocs(colRef).then((snapshot) => {
+			console.log(snapshot);
+
+			snapshot.docs.forEach((doc) => {
+				// doc.data() is never undefined for query doc snapshots
+				console.log(doc.id, ' => ', doc.data());
+			});
+		});
+	});
 </script>
 
 <div class="space-y-6">

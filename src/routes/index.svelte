@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Feed from '../lib/components/Feed.svelte';
+	import Feed from '$components/Feed.svelte';
 </script>
 
 <div class="mx-auto max-w-3xl p-3 text-gray-900">
