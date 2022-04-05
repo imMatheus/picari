@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Feed from '$components/Feed.svelte';
 	import { onMount } from 'svelte';
+	import Loader from '$components/Loader.svelte';
 
 	let resolveCameraSupported, rejectCameraSupported;
 	let cameraSupported = new Promise(function (resolve, reject) {
@@ -19,14 +20,15 @@
 </script>
 
 {#await cameraSupported}
-	<p>Loading ...</p>
+	<div class="h-96">
+		<Loader />
+	</div>
 {:then}
-	<div class="mx-auto max-w-3xl p-3 text-gray-900">
-		<Feed />
+	<div class="px-4">
+		<div class="mx-auto max-w-xl">
+			<Feed />
+		</div>
 	</div>
 {:catch}
 	<p>Camera is not supported on your device</p>
 {/await}
-
-<style>
-</style>
