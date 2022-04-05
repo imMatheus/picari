@@ -1,5 +1,5 @@
-export const getToken = async (code: string) => {
-	return await (
+export const getToken = async (code: string) =>
+	await (
 		await fetch('https://discord.com/api/oauth2/token', {
 			method: 'POST',
 			headers: {
@@ -14,10 +14,9 @@ export const getToken = async (code: string) => {
 			})
 		})
 	).json();
-};
 
-export const getUser = async (token: any) => {
-	return await (
+export const getUser = async (token: any) =>
+	await (
 		await fetch('https://discord.com/api/users/@me', {
 			method: 'GET',
 			headers: {
@@ -25,12 +24,10 @@ export const getUser = async (token: any) => {
 			}
 		})
 	).json();
-};
 
-export const getAuthUrl = (scope: any) => {
-	return `https://discord.com/api/oauth2/authorize?client_id=${
+export const getAuthUrl = (scope: any) =>
+	`https://discord.com/api/oauth2/authorize?client_id=${
 		import.meta.env.VITE_DISCORD_CLIENT_ID
 	}&redirect_uri=${encodeURIComponent(
 		import.meta.env.VITE_BASE_URL + '/discord'
 	)}&response_type=code&scope=${encodeURIComponent(scope.join(' '))}`;
-};
