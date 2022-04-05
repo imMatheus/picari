@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import FeedCard from './FeedCard.svelte';
+	import NoPosts from './NoPosts.svelte';
 	import Loader from './Loader.svelte';
 	import {
 		collection,
@@ -36,31 +37,30 @@
 	onDestroy(unsubscirbe);
 
 	async function addDocs() {
-		for (let i = 0; i < 30; i++) {
-			const post: Omit<Post, 'id'> = {
+		for (let i = 0; i < 50; i++) {
+			const post: Omit<Omit<Post, 'reactions'>, 'id'> = {
 				authorId: faker.datatype.uuid(),
 				authorName: faker.name.findName(),
 				authorImg: faker.image.imageUrl(),
 				createdAt: Timestamp.fromDate(faker.date.past()),
-				authorLocation: faker.address.city(),
-				imgUrl: faker.image.nightlife(),
-				reactions: []
+				authorLocation: faker.address.city() + ', ' + faker.address.country(),
+				imgUrl: faker.image.nightlife()
 			};
 			await addDoc(collection(db, 'posts'), post);
 		}
 	}
-
-	console.log(faker.date.past());
 </script>
 
-<div class="space-y-6">
+<div class="min-h-screen space-y-4 border-x border-x-gray-500 dark:border-x-gray-600">
 	<button class="bg-red-300 p-2" on:click={addDocs}>add docs</button>
 
 	{#if loading}
 		<Loader />
+	{:else if posts.length < 1}
+		<NoPosts />
+	{:else}
+		{#each posts as post}
+			<FeedCard {post} />
+		{/each}
 	{/if}
-
-	{#each posts as post}
-		<FeedCard {post} />
-	{/each}
 </div>
