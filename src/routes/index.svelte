@@ -20,13 +20,12 @@
 	</div>
 {:then isCameraSupported}
 	{#if isCameraSupported}
-		<div class="mx-auto max-w-3xl p-3 text-gray-900">
-			<Feed />
+		<div class="px-4">
+			<div class="mx-auto max-w-xl text-gray-900">
+				<Feed />
+			</div>
 		</div>
 	{:else}
 		<p>Camera is not supported on your device</p>
 	{/if}
 {/await}
-
-<style>
-</style>

@@ -11,6 +11,3 @@
 		{numberOfReactions}
 	</span>
 </div>
-
-<style>
-</style>

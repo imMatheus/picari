@@ -59,10 +59,8 @@
 	{#if loading}
 		<Loader />
 	{/if}
+
 	{#each posts as post}
 		<FeedCard {post} />
 	{/each}
 </div>
-
-<style>
-</style>

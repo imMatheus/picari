@@ -7,6 +7,3 @@
 	<FeedReactionsChip emoji="😂" numberOfReactions={23} />
 	<FeedReactionsChip emoji="🅿️" numberOfReactions={3} />
 </div>
-
-<style>
-</style>

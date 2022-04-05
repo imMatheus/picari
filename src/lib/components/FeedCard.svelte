@@ -12,16 +12,17 @@
 			<img class="h-12 w-12 rounded-full object-cover" src={post.authorImg} alt="" />
 		</div>
 		<div class="ml-3 w-full">
-			<div class="flex items-baseline gap-2">
+			<div class="flex flex-col items-baseline gap-0.5 md:flex-row md:gap-2">
 				<h2 class="text-base font-bold leading-none">{post.authorName}</h2>
 				<h4 class="text-xs text-gray-600">{post.authorLocation}</h4>
 			</div>
 			<div class="mt-1 text-xs font-normal leading-none text-gray-600">{post.createdAt}</div>
 		</div>
 	</div>
-	<img class="relative mt-4 h-96 rounded-md bg-red-300 object-cover" src={post.imgUrl} alt="" />
+	<img
+		class="relative mt-4 max-h-96 rounded-md bg-red-300 object-contain"
+		src={post.imgUrl}
+		alt=""
+	/>
 	<FeedReactions />
 </div>
-
-<style>
-</style>
