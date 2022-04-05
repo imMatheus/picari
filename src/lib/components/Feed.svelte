@@ -1,15 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import FeedCard from './FeedCard.svelte';
-	import {
-		getFirestore,
-		collection,
-		getDocs,
-		doc,
-		addDoc,
-		updateDoc,
-		deleteDoc
-	} from 'firebase/firestore';
+	import { collection, getDocs, doc, addDoc } from 'firebase/firestore';
 	import { db } from '$firebase';
 
 	const colRef = collection(db, 'posts');
