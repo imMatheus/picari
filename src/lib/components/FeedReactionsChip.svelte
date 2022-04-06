@@ -9,8 +9,6 @@
 	export let selected: boolean;
 	export let id: string;
 
-	console.log('selected: ', selected);
-
 	// TODO: change to real users id
 	const userID = 'abc-123';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import FeedCard from './FeedCard.svelte';
 	import NoPosts from './NoPosts.svelte';
 	import Loader from './Loader.svelte';
@@ -43,6 +43,11 @@
 
 	onDestroy(unsubscirbe);
 
+	console.log('a', faker.image.business());
+	console.log('b', faker.image.abstract());
+	console.log('c', faker.image.food());
+	console.log('d', faker.image.people());
+
 	async function addDocs() {
 		for (let i = 0; i < 50; i++) {
 			const post: Omit<Post, 'id'> = {
@@ -78,7 +83,7 @@
 </script>
 
 <div class="min-h-screen space-y-4 border-x border-x-gray-500 dark:border-x-gray-600">
-	<button class="bg-red-300 p-2" on:click={addDocs}>add docs</button>
+	<!-- <button class="bg-red-300 p-2" on:click={addDocs}>add docs</button> -->
 	<FeedHeader />
 
 	{#if loading}
