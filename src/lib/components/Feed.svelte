@@ -61,7 +61,12 @@
 </script>
 
 <div class="min-h-screen space-y-4 border-x border-x-gray-500 dark:border-x-gray-600">
-	<button class="bg-red-300 p-2" on:click={addDocs}>add docs</button>
+	<!-- <button class="bg-red-300 p-2" on:click={addDocs}>add docs</button> -->
+	<div
+		class="sticky top-0 z-50 border-b border-b-gray-500 bg-gray-50 p-3 dark:border-b-gray-600 dark:bg-[#0C111C]"
+	>
+		<h2 class="text-xl font-bold">Today</h2>
+	</div>
 
 	{#if loading}
 		<Loader />
@@ -71,5 +76,6 @@
 		{#each posts as post}
 			<FeedCard {post} />
 		{/each}
+		<Loader />
 	{/if}
 </div>
