@@ -3,6 +3,7 @@
 	import type { Post } from '../types/Post';
 	import { Timestamp } from 'firebase/firestore';
 	export let post: Post;
+	import { MapPinIcon } from 'svelte-feather-icons';
 
 	const date = post.createdAt.toDate().toLocaleTimeString();
 </script>
@@ -17,7 +18,10 @@
 				<h2 class="text-base font-bold leading-none">{post.authorName}</h2>
 				<h4 class="text-sm text-gray-500 dark:text-gray-600">{date}</h4>
 			</div>
-			<div class="mt-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">
+			<div
+				class="mt-2.5 flex items-center gap-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400"
+			>
+				<MapPinIcon class="h-3.5 w-3.5" />
 				{post.authorLocation}
 			</div>
 		</div>
