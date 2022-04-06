@@ -17,8 +17,8 @@
 		<FeedReactionsChip
 			emoji={reactionEmoji}
 			emojiName={reaction}
-			numberOfReactions={0}
-			selected={false}
+			numberOfReactions={reactions ? reactions[reaction]?.length || 0 : 0}
+			selected={reactions ? reactions[reaction]?.includes('abc-123') : 0}
 			{id}
 		/>
 	{/each}

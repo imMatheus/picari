@@ -9,6 +9,8 @@
 	export let selected: boolean;
 	export let id: string;
 
+	console.log('selected: ', selected);
+
 	// TODO: change to real users id
 	const userID = 'abc-123';
 
@@ -38,7 +40,5 @@
 <style>
 	.selected {
 		@apply border-gray-200 border-theme bg-theme text-gray-100;
-		/* color: white; */
-		/* background: red; */
 	}
 </style>

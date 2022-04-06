@@ -3,21 +3,12 @@
 	import FeedCard from './FeedCard.svelte';
 	import NoPosts from './NoPosts.svelte';
 	import Loader from './Loader.svelte';
-	import {
-		collection,
-		getDocs,
-		doc,
-		query,
-		limit,
-		addDoc,
-		onSnapshot,
-		Timestamp
-	} from 'firebase/firestore';
+	import { collection, query, limit, addDoc, onSnapshot, Timestamp } from 'firebase/firestore';
 	import { db } from '$firebase';
 	import type { Post } from '../types/Post';
 	import faker from 'faker';
 
-	const colRef = query(collection(db, 'posts'), limit(4));
+	const colRef = query(collection(db, 'posts'), limit(5));
 
 	let posts: Post[] = [];
 	let loading = true;
@@ -38,13 +29,31 @@
 
 	async function addDocs() {
 		for (let i = 0; i < 50; i++) {
-			const post: Omit<Omit<Post, 'reactions'>, 'id'> = {
+			const post: Omit<Post, 'id'> = {
 				authorId: faker.datatype.uuid(),
 				authorName: faker.name.findName(),
 				authorImg: faker.image.imageUrl(),
 				createdAt: Timestamp.fromDate(faker.date.past()),
 				authorLocation: faker.address.city() + ', ' + faker.address.country(),
-				imgUrl: faker.image.nightlife()
+				imgUrl: faker.image.nightlife(),
+				reactions: {
+					congratulations: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
+						faker.datatype.uuid()
+					),
+					heart: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
+						faker.datatype.uuid()
+					),
+					laughing: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
+						faker.datatype.uuid()
+					),
+					swag: Array.from({ length: Math.ceil(Math.random() * 200) }, () => faker.datatype.uuid()),
+					thumbsUp: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
+						faker.datatype.uuid()
+					),
+					thumbsDown: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
+						faker.datatype.uuid()
+					)
+				}
 			};
 			await addDoc(collection(db, 'posts'), post);
 		}
