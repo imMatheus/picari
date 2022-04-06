@@ -3,14 +3,19 @@
 	import { onMount } from 'svelte';
 	import Loader from '$components/Loader.svelte';
 
-	let resolveCameraSupported;
-	let cameraSupported = new Promise(function (resolve) {
+	let resolveCameraSupported, rejectCameraSupported;
+	let cameraSupported = new Promise(function (resolve, reject) {
 		resolveCameraSupported = resolve;
+		rejectCameraSupported = reject;
 	});
 
 	onMount(() => {
-		resolveCameraSupported('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices);
-		navigator.mediaDevices.getUserMedia({ video: true });
+		if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+			resolveCameraSupported();
+			navigator.mediaDevices.getUserMedia({ video: true });
+		} else {
+			rejectCameraSupported();
+		}
 	});
 </script>
 
@@ -18,14 +23,12 @@
 	<div class="h-96">
 		<Loader />
 	</div>
-{:then isCameraSupported}
-	{#if isCameraSupported}
-		<div class="px-4">
-			<div class="mx-auto max-w-xl">
-				<Feed />
-			</div>
+{:then}
+	<div class="px-4">
+		<div class="mx-auto max-w-xl">
+			<Feed />
 		</div>
-	{:else}
-		<p>Camera is not supported on your device</p>
-	{/if}
+	</div>
+{:catch}
+	<p>Camera is not supported on your device</p>
 {/await}
