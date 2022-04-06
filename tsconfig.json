@@ -6,6 +6,7 @@
 			"$components": ["src/lib/components"],
 			"$types": ["src/lib/types"],
 			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"],
 			"$utils": ["src/lib/utils"],
 			"$firebase": ["src/lib/firebase/config.ts"]
 		}
