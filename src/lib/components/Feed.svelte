@@ -3,13 +3,28 @@
 	import FeedCard from './FeedCard.svelte';
 	import NoPosts from './NoPosts.svelte';
 	import Loader from './Loader.svelte';
-	import { collection, query, limit, addDoc, onSnapshot, Timestamp } from 'firebase/firestore';
+	import {
+		collection,
+		query,
+		limit,
+		orderBy,
+		where,
+		addDoc,
+		onSnapshot,
+		Timestamp
+	} from 'firebase/firestore';
 	import { db } from '$firebase';
 	import type { Post } from '../types/Post';
 	import faker from 'faker';
 	import FeedHeader from './FeedHeader.svelte';
+	import { getStartOfToday } from '../utils/getStartOfToday';
 
-	const colRef = query(collection(db, 'posts'), limit(5));
+	const colRef = query(
+		collection(db, 'posts'),
+		limit(40),
+		orderBy('createdAt', 'desc'),
+		where('createdAt', '>', getStartOfToday())
+	);
 
 	let posts: Post[] = [];
 	let loading = true;
@@ -34,7 +49,8 @@
 				authorId: faker.datatype.uuid(),
 				authorName: faker.name.findName(),
 				authorImg: faker.image.imageUrl(),
-				createdAt: Timestamp.fromDate(faker.date.past()),
+				createdAt: Timestamp.fromDate(new Date()),
+				// createdAt: Timestamp.fromDate(faker.date.past()),
 				authorLocation: faker.address.city() + ', ' + faker.address.country(),
 				imgUrl: faker.image.nightlife(),
 				reactions: {
@@ -62,7 +78,7 @@
 </script>
 
 <div class="min-h-screen space-y-4 border-x border-x-gray-500 dark:border-x-gray-600">
-	<!-- <button class="bg-red-300 p-2" on:click={addDocs}>add docs</button> -->
+	<button class="bg-red-300 p-2" on:click={addDocs}>add docs</button>
 	<FeedHeader />
 
 	{#if loading}
