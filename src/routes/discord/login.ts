@@ -1,6 +1,6 @@
-import { getAuthUrl } from '../../lib/functions/discord';
+import { getAuthUrl } from '../../lib/functions/auth';
 
-export async function get(req) {
+export async function get() {
 	return {
 		status: 302,
 		headers: {
