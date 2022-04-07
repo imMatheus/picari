@@ -1,7 +1,6 @@
 <script lang="ts">
 	import FeedReactions from './FeedReactions.svelte';
-	import type { Post } from '../types/Post';
-	import { Timestamp } from 'firebase/firestore';
+	import type { Post } from '../../types/Post';
 	export let post: Post;
 	import { MapPinIcon } from 'svelte-feather-icons';
 
