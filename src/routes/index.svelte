@@ -24,11 +24,7 @@
 		<Loader />
 	</div>
 {:then}
-	<div class="px-4">
-		<div class="mx-auto max-w-xl">
-			<Feed />
-		</div>
-	</div>
+	<Feed />
 {:catch}
 	<p>Camera is not supported on your device</p>
 {/await}

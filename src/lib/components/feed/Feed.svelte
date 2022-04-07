@@ -22,8 +22,8 @@
 	const colRef = query(
 		collection(db, 'posts'),
 		limit(40),
-		orderBy('createdAt', 'desc'),
-		where('createdAt', '>', getStartOfToday())
+		orderBy('createdAt', 'desc')
+		// where('createdAt', '>', getStartOfToday())
 	);
 
 	let posts: Post[] = [];
@@ -82,7 +82,7 @@
 	}
 </script>
 
-<div class="min-h-screen space-y-4 border-x border-x-gray-500 dark:border-x-gray-600">
+<div class="min-h-screen space-y-4">
 	<!-- <button class="bg-red-300 p-2" on:click={addDocs}>add docs</button> -->
 	<FeedHeader />
 

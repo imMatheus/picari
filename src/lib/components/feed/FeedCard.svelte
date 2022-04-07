@@ -7,7 +7,7 @@
 	const date = post.createdAt.toDate().toLocaleTimeString();
 </script>
 
-<div class="relative border-b border-b-gray-500 p-3 last:border-b-0 dark:border-b-gray-600">
+<div class="relative border-b border-b-gray-500 p-4 last:border-b-0 dark:border-b-gray-600">
 	<div class="flex items-start">
 		<div class="flex-shrink-0">
 			<img class="h-12 w-12 rounded-full object-cover" src={post.authorImg} alt="" />

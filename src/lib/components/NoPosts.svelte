@@ -2,7 +2,7 @@
 	import { PlusIcon } from 'svelte-feather-icons';
 </script>
 
-<div class="p-3">
+<div class="p-4">
 	<h1 class="text-center text-3xl font-bold">
 		Oops, looks liek no one has posted anything yet. Be the first one 🫣
 	</h1>
