@@ -28,9 +28,15 @@
 	<img class="relative mt-4 max-h-[28rem] rounded-md object-contain" src={post.imgUrl} alt="" />
 
 	<div
-		class="group my-1.5 flex w-max items-center gap-1 border-b border-b-transparent text-blue-400 transition-colors hover:border-b-blue-400"
+		class="group my-1.5 flex w-max cursor-pointer items-center gap-1 border-b border-b-transparent text-blue-400 transition-colors hover:border-b-blue-400"
 	>
-		<a href={`/posts/${post.id}`} class="text-sm">View 8 comments</a>
+		<a href={`/posts/${post.id}`} class="text-sm">
+			{#if post.numberOfComments > 0}
+				View {post.numberOfComments} comments
+			{:else}
+				Leave a comment
+			{/if}
+		</a>
 		<ArrowRightIcon class="h-4 w-4" />
 	</div>
 

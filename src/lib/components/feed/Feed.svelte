@@ -3,34 +3,21 @@
 	import FeedCard from './FeedCard.svelte';
 	import NoPosts from '../NoPosts.svelte';
 	import Loader from '../Loader.svelte';
-	import {
-		collection,
-		query,
-		limit,
-		orderBy,
-		where,
-		addDoc,
-		onSnapshot,
-		Timestamp
-	} from 'firebase/firestore';
 	import { db } from '$firebase';
+	import { collection, query, limit, orderBy, where, onSnapshot } from 'firebase/firestore';
 	import type { Post } from '../../types/Post';
-	import faker from 'faker';
 	import FeedHeader from './FeedHeader.svelte';
 	import { getStartOfToday } from '../../utils/getStartOfToday';
 
 	const colRef = query(
 		collection(db, 'posts'),
-		limit(40),
-		orderBy('createdAt', 'desc')
-		// where('createdAt', '>', getStartOfToday())
+		limit(5),
+		orderBy('createdAt', 'desc'),
+		where('createdAt', '>', getStartOfToday())
 	);
 
 	let posts: Post[] = [];
 	let loading = true;
-
-	// logs posts every time value changes
-	$: console.log(posts);
 
 	const unsubscirbe = onSnapshot(colRef, (snapshot) => {
 		loading = true;
@@ -42,44 +29,6 @@
 	});
 
 	onDestroy(unsubscirbe);
-
-	console.log('a', faker.image.business());
-	console.log('b', faker.image.abstract());
-	console.log('c', faker.image.food());
-	console.log('d', faker.image.people());
-
-	async function addDocs() {
-		for (let i = 0; i < 50; i++) {
-			const post: Omit<Post, 'id'> = {
-				authorId: faker.datatype.uuid(),
-				authorName: faker.name.findName(),
-				authorImg: faker.image.imageUrl(),
-				createdAt: Timestamp.fromDate(new Date()),
-				// createdAt: Timestamp.fromDate(faker.date.past()),
-				authorLocation: faker.address.city() + ', ' + faker.address.country(),
-				imgUrl: faker.image.nightlife(),
-				reactions: {
-					congratulations: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
-						faker.datatype.uuid()
-					),
-					heart: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
-						faker.datatype.uuid()
-					),
-					laughing: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
-						faker.datatype.uuid()
-					),
-					swag: Array.from({ length: Math.ceil(Math.random() * 200) }, () => faker.datatype.uuid()),
-					thumbsUp: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
-						faker.datatype.uuid()
-					),
-					thumbsDown: Array.from({ length: Math.ceil(Math.random() * 200) }, () =>
-						faker.datatype.uuid()
-					)
-				}
-			};
-			await addDoc(collection(db, 'posts'), post);
-		}
-	}
 </script>
 
 <div class="min-h-screen space-y-4">

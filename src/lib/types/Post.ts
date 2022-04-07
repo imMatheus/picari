@@ -9,5 +9,6 @@ export interface Post {
 	authorId: string;
 	authorLocation: string;
 	imgUrl: string;
+	numberOfComments: number;
 	reactions: PostReaction;
 }

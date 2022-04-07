@@ -12,11 +12,9 @@
 	const userID = 'abc-123';
 
 	async function add() {
-		const res = await updateDoc(doc(db, 'posts', id), {
+		await updateDoc(doc(db, 'posts', id), {
 			[`reactions.${emojiName}`]: selected ? arrayRemove(userID) : arrayUnion(userID)
 		});
-		console.log('res');
-		console.log(res);
 	}
 </script>
 
