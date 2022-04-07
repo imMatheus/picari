@@ -16,7 +16,7 @@
 	import { db } from '$firebase';
 	import type { Post } from '../../types/Post';
 	import faker from 'faker';
-	import FeedHeader from '../FeedHeader.svelte';
+	import FeedHeader from './FeedHeader.svelte';
 	import { getStartOfToday } from '../../utils/getStartOfToday';
 
 	const colRef = query(
