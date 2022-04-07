@@ -1,11 +1,12 @@
-import { db } from '../firebase/config';
+import { db } from '$lib/firebase/config';
 import { doc, setDoc, query, collection, where, getDocs } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/config';
+const DISCORD_API_URL = 'https://discordapp.com/api';
 
 export const getToken = async (code: string) =>
 	await (
-		await fetch('https://discord.com/api/oauth2/token', {
+		await fetch(`${DISCORD_API_URL}/oauth2/token`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -22,7 +23,7 @@ export const getToken = async (code: string) =>
 
 export const getUser = async (token: any) =>
 	await (
-		await fetch('https://discord.com/api/users/@me', {
+		await fetch(`${DISCORD_API_URL}/users/@me`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${token.access_token}`
@@ -31,7 +32,7 @@ export const getUser = async (token: any) =>
 	).json();
 
 export const getAuthUrl = (scope: any) =>
-	`https://discord.com/api/oauth2/authorize?client_id=${
+	`${DISCORD_API_URL}/oauth2/authorize?client_id=${
 		import.meta.env.VITE_DISCORD_CLIENT_ID
 	}&redirect_uri=${encodeURIComponent(
 		import.meta.env.VITE_BASE_URL + '/discord'
