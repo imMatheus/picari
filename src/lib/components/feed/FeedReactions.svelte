@@ -1,7 +1,7 @@
 <script lang="ts">
 	import FeedReactionsChip from './FeedReactionsChip.svelte';
-	import { Emoji, Emojis } from '../types/Emoji';
-	import type { PostReaction } from '../types/PostReaction';
+	import { Emojis } from '../../types/Emoji';
+	import type { PostReaction } from '../../types/PostReaction';
 	export let id: string;
 	export let reactions: PostReaction;
 </script>

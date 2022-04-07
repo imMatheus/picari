@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Feed from '$components/Feed.svelte';
+	import Feed from '$components/feed/Feed.svelte';
 	import { onMount } from 'svelte';
 	import Loader from '$components/Loader.svelte';
 

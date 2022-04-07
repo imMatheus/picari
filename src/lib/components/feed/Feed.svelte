@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import FeedCard from './FeedCard.svelte';
-	import NoPosts from './NoPosts.svelte';
-	import Loader from './Loader.svelte';
+	import NoPosts from '../NoPosts.svelte';
+	import Loader from '../Loader.svelte';
 	import {
 		collection,
 		query,
@@ -14,10 +14,10 @@
 		Timestamp
 	} from 'firebase/firestore';
 	import { db } from '$firebase';
-	import type { Post } from '../types/Post';
+	import type { Post } from '../../types/Post';
 	import faker from 'faker';
-	import FeedHeader from './FeedHeader.svelte';
-	import { getStartOfToday } from '../utils/getStartOfToday';
+	import FeedHeader from '../FeedHeader.svelte';
+	import { getStartOfToday } from '../../utils/getStartOfToday';
 
 	const colRef = query(
 		collection(db, 'posts'),

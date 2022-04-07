@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { db } from '$firebase';
 	import { doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
-	import type { Emoji, Emojis } from '../types/Emoji';
 
 	export let emoji: string;
 	export let emojiName: string;
