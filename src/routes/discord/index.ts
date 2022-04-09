@@ -38,21 +38,20 @@ export async function get(req) {
 		};
 
 	if (await getUserByDiscordId(user.id)) {
-		const loggedInUser = await logInWithDiscord(user, token);
+		const token = await logInWithDiscord(user);
 		return {
-			status: 200,
-			body: {
-				message: 'Signed in successfully',
-				loggedInUser
-			}
+			headers: {
+				location: `/?token=${token}`
+			},
+			status: 302
+		};
+	} else {
+		const token = await createUserWithDiscord(user);
+		return {
+			headers: {
+				location: `/?token=${token}`
+			},
+			status: 302
 		};
 	}
-	const createdUser = await createUserWithDiscord(user, token);
-	return {
-		status: 200,
-		body: {
-			message: 'Created user successfully',
-			createdUser
-		}
-	};
 }

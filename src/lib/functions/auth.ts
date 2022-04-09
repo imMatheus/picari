@@ -1,7 +1,7 @@
 import { db } from '../firebase/config';
 import { doc, setDoc, query, collection, where, getDocs } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase/config';
+import { auth } from '../firebase/admin';
 const DISCORD_API_URL = 'https://discordapp.com/api';
 
 export const getToken = async (code: string) =>
@@ -38,9 +38,12 @@ export const getAuthUrl = (scope: any) =>
 		import.meta.env.VITE_BASE_URL + '/discord'
 	)}&response_type=code&scope=${encodeURIComponent(scope.join(' '))}`;
 
-export const createUserWithDiscord = async (user, token) => {
-	const createdUser = await createUserWithEmailAndPassword(auth, user.email, token.access_token);
-	const userRef = doc(db, 'users', createdUser.user.uid);
+export const createUserWithDiscord = async (user) => {
+	const createdUser = await auth.createUser({
+		uid: user.id,
+		email: user.email
+	});
+	const userRef = doc(db, 'users', createdUser.uid);
 	await setDoc(userRef, {
 		discord_id: user.id,
 		email: user.email,
@@ -49,11 +52,11 @@ export const createUserWithDiscord = async (user, token) => {
 		avatar: user.avatar,
 		createdAt: new Date().toISOString()
 	});
-	return createdUser;
+	return await auth.createCustomToken(user.id);
 };
 
-export const logInWithDiscord = async (user, token) => {
-	return await signInWithEmailAndPassword(auth, user.email, token.access_token);
+export const logInWithDiscord = async (user) => {
+	return await auth.createCustomToken(user.id);
 };
 
 export const getUserByDiscordId = async (discordId: string) => {

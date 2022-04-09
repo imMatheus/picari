@@ -4,7 +4,7 @@
 
 <div class="p-4">
 	<h1 class="text-center text-3xl font-bold">
-		Oops, looks liek no one has posted anything yet. Be the first one 🫣
+		Oops, looks like no one has posted anything yet. Be the first one 🫣
 	</h1>
 	<button
 		class="mx-auto mt-4 flex items-center gap-1 rounded-lg bg-theme px-4 py-1 text-base text-white"

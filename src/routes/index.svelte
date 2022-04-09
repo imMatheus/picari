@@ -2,6 +2,8 @@
 	import Feed from '$components/feed/Feed.svelte';
 	import { onMount } from 'svelte';
 	import Loader from '$components/Loader.svelte';
+	import { auth } from '$lib/firebase/config';
+	import { signInWithCustomToken } from 'firebase/auth';
 
 	let resolveCameraSupported, rejectCameraSupported;
 	let cameraSupported = new Promise(function (resolve, reject) {
@@ -15,6 +17,20 @@
 			navigator.mediaDevices.getUserMedia({ video: true });
 		} else {
 			rejectCameraSupported();
+			return;
+		}
+
+		//get get parameters token
+		const urlParams = new URLSearchParams(window.location.search);
+		const token = urlParams.get('token');
+		if (token) {
+			signInWithCustomToken(auth, token)
+				.then((val) => {
+					console.log('signed in', val);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		}
 	});
 </script>
