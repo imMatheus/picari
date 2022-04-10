@@ -21,7 +21,9 @@
 		<div class="flex items-center gap-2">
 			<div class="flex flex-col text-right">
 				<p class="text-sm font-bold">{userData.username}</p>
-				<p class="text-xs text-gray-500">Log out</p>
+				<button on:click={() => (location.href = './logout')} class="text-xs text-gray-500"
+					>Log out</button
+				>
 			</div>
 			<img
 				class="h-8 w-8 rounded-full"

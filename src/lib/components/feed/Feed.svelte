@@ -43,6 +43,6 @@
 		{#each posts as post}
 			<FeedCard {post} />
 		{/each}
-		<Loader />
+		<!-- <Loader /> -->
 	{/if}
 </div>

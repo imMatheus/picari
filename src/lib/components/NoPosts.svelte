@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PlusIcon } from 'svelte-feather-icons';
+	import { createMockPost } from '../functions/post';
 </script>
 
 <div class="p-4">
@@ -7,6 +8,9 @@
 		Oops, looks like no one has posted anything yet. Be the first one!
 	</h1>
 	<button
+		on:click={() => {
+			createMockPost();
+		}}
 		class="mx-auto mt-4 flex items-center gap-1 rounded-lg bg-theme px-4 py-1 text-base text-white"
 		><PlusIcon class="h-5 w-5" /> Create a post</button
 	>

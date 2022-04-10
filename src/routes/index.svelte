@@ -60,6 +60,9 @@
 {#await cameraSupported}
 	<div class="h-96">
 		<Loader />
+		<div class="text-center">
+			<h1 class="text-2xl">Loading content...</h1>
+		</div>
 	</div>
 {:then}
 	<Feed />

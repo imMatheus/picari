@@ -1,6 +1,8 @@
 import { db } from '../firebase/config';
 import { doc, setDoc, query, collection, where, getDocs } from 'firebase/firestore';
-import { auth } from '../firebase/admin';
+import { signOut } from 'firebase/auth';
+import { auth as adminAuth } from '../firebase/admin';
+
 const DISCORD_API_URL = 'https://discordapp.com/api';
 
 export const getToken = async (code: string) =>
@@ -38,7 +40,7 @@ export const getAuthUrl = (scope: any) =>
 	)}&response_type=code&scope=${encodeURIComponent(scope.join(' '))}`;
 
 export const createUserWithDiscord = async (user) => {
-	const createdUser = await auth.createUser({
+	const createdUser = await adminAuth.createUser({
 		uid: user.id,
 		email: user.email
 	});
@@ -51,11 +53,11 @@ export const createUserWithDiscord = async (user) => {
 		avatar: user.avatar,
 		createdAt: new Date().toISOString()
 	});
-	return await auth.createCustomToken(user.id);
+	return await adminAuth.createCustomToken(user.id);
 };
 
 export const logInWithDiscord = async (user) => {
-	return await auth.createCustomToken(user.id);
+	return await adminAuth.createCustomToken(user.id);
 };
 
 export const getUserByDiscordId = async (discordId: string) => {
@@ -66,4 +68,8 @@ export const getUserByDiscordId = async (discordId: string) => {
 		return null;
 	}
 	return querySnapshot.docs[0].data();
+};
+
+export const logOut = async () => {
+	console.log('lol');
 };
