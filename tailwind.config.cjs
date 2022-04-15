@@ -6,7 +6,9 @@ module.exports = {
 				roboto: ["'Roboto'", 'sans-serif']
 			},
 			colors: {
-				theme: '#2266ff'
+				theme: '#2266ff',
+				dark: '#0B0A0A',
+				'dark-100': '#151313'
 			}
 		}
 	},

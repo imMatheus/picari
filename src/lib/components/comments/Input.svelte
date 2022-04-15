@@ -38,7 +38,7 @@
 		name="comment"
 		id="comment"
 		placeholder="Add a comment..."
-		class="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-black shadow-sm outline-none focus:border-theme focus:ring-transparent dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:text-sm"
+		class="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-black shadow-sm outline-none focus:border-theme focus:ring-transparent dark:border-gray-700 dark:bg-dark-100 dark:text-white sm:text-sm"
 	/>
 
 	<button type="submit" class="ml-2 rounded-md bg-theme py-1 px-4 text-white">Send</button>

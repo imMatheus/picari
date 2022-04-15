@@ -30,7 +30,7 @@
 {#if loading}
 	<Loader />
 {:else}
-	<div class="relative flex h-full flex-col-reverse space-y-4 overflow-y-scroll p-4">
+	<div class="relative flex h-full flex-col-reverse space-y-8 overflow-y-scroll p-4">
 		{#each comments as comment}
 			<CommentCard {comment} />
 		{/each}

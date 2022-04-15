@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="border-b-gray-500bg-gray-50 flex  items-center justify-between border-b p-4 dark:border-b-gray-600 dark:bg-[#0C111C]"
+	class="flex items-center justify-between  border-b border-b-gray-500 bg-gray-50 p-4 dark:border-b-gray-600 dark:bg-dark"
 >
 	<div class="sticky top-0 z-50 flex items-baseline gap-2 ">
 		<h2 class="text-xl font-bold">Today</h2>
