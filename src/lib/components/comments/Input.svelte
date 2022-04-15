@@ -28,14 +28,17 @@
 	}
 </script>
 
-<form class="flex flex-shrink-0 border bg-white p-4" on:submit|preventDefault={createComment}>
+<form
+	class="flex flex-shrink-0 border-t p-4 dark:border-t-gray-500"
+	on:submit|preventDefault={createComment}
+>
 	<input
 		bind:value={comentString}
 		type="text"
 		name="comment"
 		id="comment"
 		placeholder="Add a comment..."
-		class="block w-full rounded-md border-gray-300 px-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+		class="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-black shadow-sm outline-none focus:border-theme focus:ring-transparent dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:text-sm"
 	/>
 
 	<button type="submit" class="ml-2 rounded-md bg-theme py-1 px-4 text-white">Send</button>
