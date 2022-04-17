@@ -17,14 +17,14 @@
 			createdAt: Timestamp.now()
 		};
 
+		comentString = '';
+
 		// adds new comment to a post
 		await addDoc(collection(db, `posts/${postId}/comments`), comment);
 		// update field for the post
 		await updateDoc(doc(db, `posts/${postId}`), {
 			numberOfComments: increment(1)
 		});
-
-		comentString = '';
 	}
 </script>
 
