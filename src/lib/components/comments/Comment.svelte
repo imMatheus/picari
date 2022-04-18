@@ -6,7 +6,7 @@
 	const userId = 'abc-123';
 </script>
 
-<div class:selected={userId === comment.authorId} class="flex max-w-sm gap-1 rounded-lg">
+<div class:selected={userId === comment.authorId} class="flex max-w-sm gap-1 rounded-lg first:mt-8">
 	<div class="h-9 w-9 flex-shrink-0">
 		<img src="/static/avatar.jpg" alt="" class="h-full w-full rounded-md object-cover" />
 	</div>
